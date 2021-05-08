@@ -10,15 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_08_215737) do
+ActiveRecord::Schema.define(version: 2021_05_08_215920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "harvests", force: :cascade do |t|
-    t.bigint "user_id", null: false
+  create_table "harvested_products", id: false, force: :cascade do |t|
+    t.bigint "harvest_id"
+    t.bigint "product_id"
+    t.integer "amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["harvest_id"], name: "index_harvested_products_on_harvest_id"
+    t.index ["product_id"], name: "index_harvested_products_on_product_id"
+  end
+
+  create_table "harvests", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "offering_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["offering_id"], name: "index_harvests_on_offering_id"
     t.index ["user_id"], name: "index_harvests_on_user_id"
   end
 
@@ -57,5 +69,6 @@ ActiveRecord::Schema.define(version: 2021_05_08_215737) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "harvests", "offerings"
   add_foreign_key "harvests", "users"
 end
