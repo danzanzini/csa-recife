@@ -1,13 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "Offers", type: :request do
-  describe "GET /index" do
-    it "returns http success" do
-      get "/offers/index"
-      expect(response).to have_http_status(:success)
-    end
-  end
-
   describe "GET /create" do
     it "returns http success" do
       get "/offers/create"
