@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2021_05_08_215920) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "offers", id: false, force: :cascade do |t|
+  create_table "offers", force: :cascade do |t|
     t.bigint "offering_id"
     t.bigint "product_id"
     t.integer "amount"
