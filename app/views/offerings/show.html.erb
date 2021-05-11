@@ -10,9 +10,15 @@
   <%= @offering.published %>
 </p>
 
-<ul>
+<ul class='list-group'>
   <% @offering.offers.each do |offer| %>
-    <li><%= offer.product.name %>: <%= offer.amount%></li>
+    <li class='list-group-item'>
+      <div class='d-flex justify-content-between'>
+        <span>
+          <%= offer.product_name %>: <%= offer.amount %>
+        </span>
+      </div>
+    </li>
   <% end %>
 </ul>
 
