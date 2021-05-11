@@ -8,6 +8,7 @@ class OfferingsController < ApplicationController
 
   # GET /offerings/1 or /offerings/1.json
   def show
+    @offer = @offering.offers.build
   end
 
   # GET /offerings/new
