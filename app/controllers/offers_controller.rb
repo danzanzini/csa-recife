@@ -1,5 +1,6 @@
 class OffersController < ApplicationController
   before_action :set_offering
+  before_action :set_offer, only: [:update, :destroy]
 
   def create
     @offer = @offering.offers.build(offer_params)
@@ -19,11 +20,20 @@ class OffersController < ApplicationController
   end
 
   def destroy
+    @offer.destroy!
+    redirect_to(
+      offering_url(@offering),
+      notice: "Offer was successfully destroyed."
+    )
   end
 
 private
   def set_offering
     @offering = Offering.find(params[:offering_id])
+  end
+
+  def set_offer
+    @offer = Offer.find(params[:id])
   end
 
   def offer_params

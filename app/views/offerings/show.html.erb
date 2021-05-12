@@ -1,22 +1,29 @@
 <p id="notice"><%= notice %></p>
 
+<h1>
+  Oferenda para o dia <strong><%= @offering.closes_at.strftime('%d/%m') %></strong>
+</h1>
 <p>
-  <strong>Ends at:</strong>
-  <%= @offering.closes_at %>
+  <strong>Encerra em:</strong>
+  <%= @offering.closes_at.strftime('%d/%m (%A) às %H:%M') %>
 </p>
 
 <p>
-  <strong>Published:</strong>
+  <strong>Publicada:</strong>
   <%= @offering.published %>
 </p>
 
 <ul class='list-group'>
   <% @offering.offers.each do |offer| %>
+    <% next unless offer.persisted? %>
     <li class='list-group-item'>
       <div class='d-flex justify-content-between'>
         <span>
           <%= offer.product_name %>: <%= offer.amount %>
         </span>
+        <%= link_to offering_offer_url(@offering.id, offer.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do %>
+          <i class='fas fa-trash fa-sm'></i>
+        <% end %>
       </div>
     </li>
   <% end %>
