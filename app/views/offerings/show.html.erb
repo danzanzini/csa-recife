@@ -13,22 +13,6 @@
   <%= @offering.published %>
 </p>
 
-<ul class='list-group'>
-  <% @offering.offers.each do |offer| %>
-    <% next unless offer.persisted? %>
-    <li class='list-group-item'>
-      <div class='d-flex justify-content-between'>
-        <span>
-          <%= offer.product_name %>: <%= offer.amount %>
-        </span>
-        <%= link_to offering_offer_url(@offering.id, offer.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do %>
-          <i class='fas fa-trash fa-sm'></i>
-        <% end %>
-      </div>
-    </li>
-  <% end %>
-</ul>
-
 <%= form_with(model: [@offering, @offer]) do |form| %>
   <% if @offer.errors.any? %>
     <div id="error_explanation">
@@ -57,6 +41,21 @@
   </div>
 <% end %>
 
+<ul class='list-group'>
+  <% @offering.offers.order(product_name: :asc).each do |offer| %>
+    <% next unless offer.persisted? %>
+    <li class='list-group-item'>
+      <div class='d-flex justify-content-between'>
+        <span>
+          <%= offer.product_name %>: <%= offer.amount %>
+        </span>
+        <%= link_to offering_offer_url(@offering.id, offer.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do %>
+          <i class='fas fa-trash fa-sm'></i>
+        <% end %>
+      </div>
+    </li>
+  <% end %>
+</ul>
 
 <%= link_to 'Edit', edit_offering_path(@offering) %> |
 <%= link_to 'Back', offerings_path %>
