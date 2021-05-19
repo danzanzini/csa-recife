@@ -1,0 +1,29 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), class: 'form-signin') do |f| %>
+  <h1 class="h3 mb-3 font-weight-normal">CSA Recife</h1>
+
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email, 'E-mail' %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'email@exemplo.com' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password, 'Senha' %>
+    <%= f.password_field :password, autocomplete: "current-password", class: 'form-control', placeholder: '**********' %>
+  </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="field checkbox mb-3">
+      <%= f.label :remember_me  do %>
+        <%= f.check_box :remember_me %>Mantenha-me conectado
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit "Entrar", class: 'btn btn-lg btn-primary btn-block' %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
