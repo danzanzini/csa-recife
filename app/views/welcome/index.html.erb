@@ -1,3 +1,3 @@
-Olá, bem-vindo ao CSA
+Olá, <%= current_user.first_name %>
 
 <%= button_to "Sair", destroy_user_session_url, data: { confirm: "Tem certeza que deseja sair?" }, method: :delete, class: 'btn btn-lg btn-block' %>
