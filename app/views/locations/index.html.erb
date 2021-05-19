@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Locais de colheita</h1>
+
+<ul class='list-group'>
+  <% @locations.each do |location| %>
+    <li class='list-group-item'>
+      <div class='d-flex justify-content-between'>
+        <%= location.name %>
+        <!-- <div>
+          <%= link_to location do %>
+            <%= location.name %>
+          <% end %>
+        </div> -->
+        <!-- div>
+          <%= link_to 'Editar', edit_location_path(location) %>
+          <%= link_to 'Deletar', location, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div -->
+      </div>
+    </li>
+  <% end %>
+</ul>
+
+<br>
+
+<!-- %= link_to 'Novo local de colheita', new_location_path % -->
+<%= link_to 'Voltar', '/' %>
