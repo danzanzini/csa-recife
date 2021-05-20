@@ -16,11 +16,9 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class='py-4 bg-light'>
-    <main class="container">
-      <div class="my-3 p-3 bg-white rounded box-shadow">
-        <%= yield %>
-      </div>
+  <body class='py-4 bg-light wrapper'>
+    <main class="container bg-white rounded box-shadow">
+      <%= yield %>
     </main>
   </body>
 </html>
