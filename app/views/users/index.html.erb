@@ -8,6 +8,7 @@
       <th scope="col">Nome</th>
       <th scope="col">Local de Colheita</th>
       <th scope="col-sm-1">Itens</th>
+      <th scope="col-sm-1">Status</th>
       <th scope="col">Ações</th>
     </tr>
   </thead>
@@ -18,6 +19,7 @@
         <th scope="row"><%= user.full_name %></th>
         <td><%= user.location&.name %></td>
         <td><%= user.items_per_harvest %></td>
+        <td><%= user_status(user.active) %></td>
         <td><%= link_to 'Show', user %> <%= link_to 'Edit', edit_user_path(user) %></td>
       </tr>
     <% end %>
@@ -26,4 +28,5 @@
 
 <br>
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'Novo apoiador', new_user_path, class: 'btn btn-primary' %>
+<%= link_to 'Voltar', root_path, class: 'btn btn-secondary' %>
