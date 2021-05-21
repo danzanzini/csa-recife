@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_21_034638) do
+ActiveRecord::Schema.define(version: 2021_05_21_040516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 2021_05_21_034638) do
     t.boolean "published"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "location_id"
+    t.index ["location_id"], name: "index_offerings_on_location_id"
   end
 
   create_table "offers", force: :cascade do |t|
@@ -85,5 +87,6 @@ ActiveRecord::Schema.define(version: 2021_05_21_034638) do
 
   add_foreign_key "harvests", "offerings"
   add_foreign_key "harvests", "users"
+  add_foreign_key "offerings", "locations"
   add_foreign_key "users", "locations"
 end
