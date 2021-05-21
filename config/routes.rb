@@ -4,9 +4,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  devise_scope :user do
-    get 'users', to: 'users/registrations#index'
-  end
+
 
   resources :harvests
   resources :offerings do
