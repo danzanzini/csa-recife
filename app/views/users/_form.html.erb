@@ -22,14 +22,18 @@
       <%= form.text_field :last_name, class: "form-control",
         placeholder: "Sobrenome", 'aria-label' => "Sobrenome" %>
     </div>
-    <div class="col-12">
+    <div class="col-md-6">
       <%= form.label :email, 'E-mail', class: "form-label" %>
       <%= form.text_field :email, class: "form-control",
         placeholder: "E-mail", 'aria-label' => "E-mail" %>
     </div>
-  </div>
+    <div class="col-md-6">
+      <%= form.label :location_id, 'Local de colheita', class: "form-label" %>
+      <%= form.collection_select(:location_id, Location.all, :id, :name, {prompt: 'Escolha um local de colheita'}, { class: 'form-select' }) %>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
+    <div class="actions col-12">
+      <%= form.submit class: "btn btn-primary" %>
+    </div>
   </div>
 <% end %>
