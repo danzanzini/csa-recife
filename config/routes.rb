@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  resources :users
-  resources :locations
   root to: 'welcome#index'
 
   devise_for :users
 
+  resources :users, except: [:destroy]
+  resources :locations
   resources :harvests
   resources :offerings do
     resources :offers, only: [:create, :update, :destroy]
