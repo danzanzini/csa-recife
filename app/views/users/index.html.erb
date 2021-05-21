@@ -2,12 +2,12 @@
 
 <h1>Users</h1>
 
-<table class="table">
+<table class="table table-striped">
   <thead>
     <tr>
       <th scope="col">Nome</th>
       <th scope="col">Local de Colheita</th>
-      <th scope="col">Número de itens</th>
+      <th scope="col-sm-1">Itens</th>
       <th scope="col">Ações</th>
     </tr>
   </thead>
@@ -17,8 +17,8 @@
       <tr>
         <th scope="row"><%= user.full_name %></th>
         <td><%= user.location&.name %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= user.items_per_harvest %></td>
+        <td><%= link_to 'Show', user %> <%= link_to 'Edit', edit_user_path(user) %></td>
       </tr>
     <% end %>
   </tbody>
