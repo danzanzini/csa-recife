@@ -22,7 +22,7 @@
     </div>
     <div class="col-md-3">
       <%= form.label :closes_at_time, 'Encerra às', class: "form-label" %>
-      <%= form.time_select :closes_at_time, {minute_step: 15}, { class: "form-select", "aria-label" => 'Encerra às' } %>
+      <%= form.time_select :closes_at_time, {minute_step: 15, start_hour: 8, end_hour: 20, time_separator: ''}, { class: "form-select", "aria-label" => 'Encerra às' } %>
     </div>
 
   <div class="actions text-right">
