@@ -42,11 +42,11 @@ ActiveRecord::Schema.define(version: 2021_05_21_040516) do
   end
 
   create_table "offerings", force: :cascade do |t|
-    t.datetime "closes_at"
     t.boolean "published"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "location_id"
+    t.datetime "closes_at"
     t.index ["location_id"], name: "index_offerings_on_location_id"
   end
 

@@ -1,5 +1,10 @@
-<h1>New Offering</h1>
+<div class="navbar">
+  <div class="h3 float-left">
+    Nova Oferenda
+  </div>
 
-<%= render 'form', offering: @offering %>
+  <%= link_to 'Voltar', offerings_path, class: 'btn btn-secondary float-right' %>
+</div>
 
-<%= link_to 'Back', offerings_path %>
+
+<%= render 'form', offering: @offering, submit_label: 'Salvar e adicionar itens' %>

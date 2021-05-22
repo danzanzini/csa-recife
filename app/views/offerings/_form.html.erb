@@ -11,17 +11,21 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :closes_at %>
-    <%= form.datetime_select :closes_at %>
-  </div>
+  <div class="row g-3">
+    <div class="col-md-5">
+      <%= form.label :location_id, 'Local de colheita', class: "form-label" %>
+      <%= form.collection_select(:location_id, Location.all, :id, :name, {prompt: false }, { class: 'form-select' }) %>
+    </div>
+    <div class="col-md-4">
+      <%= form.label :closes_at_date, 'Encerra em', class: "form-label" %>
+      <%= form.select :closes_at_date, seven_days_from_now, { prompt: false }, { class: "form-select", "aria-label" => 'Encerra em' } %>
+    </div>
+    <div class="col-md-3">
+      <%= form.label :closes_at_time, 'Encerra às', class: "form-label" %>
+      <%= form.time_select :closes_at_time, {minute_step: 15}, { class: "form-select", "aria-label" => 'Encerra às' } %>
+    </div>
 
-  <div class="field">
-    <%= form.label :published %>
-    <%= form.check_box :published %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions text-right">
+    <%= form.submit submit_label, class: 'btn btn-primary' %>
   </div>
 <% end %>
