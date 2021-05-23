@@ -1,17 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<h1>
-  Oferenda para o dia <strong><%= @offering.closes_at.strftime('%d/%m') %></strong>
-</h1>
-<p>
-  <strong>Encerra em:</strong>
-  <%= @offering.closes_at.strftime('%d/%m (%A) às %H:%M') %>
-</p>
+<div class="navbar">
+  <div class="h3 float-left">
+    Oferenda
+  </div>
 
-<p>
-  <strong>Publicada:</strong>
-  <%= @offering.published %>
-</p>
+  <%= link_to 'Voltar', offerings_path, class: 'btn btn-secondary float-right' %>
+</div>
+
+<div class="row g-3 pb-3 border-bottom">
+  <div class="col-md-5">
+    <label for="location_id" class="form-label">Local de Colheita</label>
+    <input type="text" readonly class="form-control" id="location_id" value="<%= @offering.location.name %>">
+  </div>
+  <div class="col-md-4">
+    <label for="closes_at" class="form-label">Encerra em</label>
+    <input type="text" readonly class="form-control" id="closes_at" value="<%= I18n.l(@offering.closes_at, format: '%d/%m (%A) às %H:%M') %>">
+  </div>
+</div>
+
+<div class="h4 mt-3">
+  Produtos disponíveis
+</div>
 
 <%= form_with(model: [@offering, @offer]) do |form| %>
   <% if @offer.errors.any? %>
@@ -26,17 +36,17 @@
     </div>
   <% end %>
 
-  <div class="row">
-    <div class="field col-md-4 mb-2">
-      <%= form.label :product_name %>
+  <div class="row mb-3">
+    <div class="field col-md-4">
+      <%= form.label :product_name, 'Produto', class: 'form-label' %>
       <%= form.text_field :product_name, class: "form-control" %>
     </div>
-    <div class="field col-md-4 mb-2">
-      <%= form.label :amount %>
+    <div class="field col-md-4">
+      <%= form.label :amount, 'Quantidade', class: 'form-label' %>
       <%= form.text_field :amount, class: "form-control" %>
     </div>
 
-    <div class="col-md-4 mb-2">
+    <div class="col-md-4">
       <%= form.submit 'Adicionar item', class: "btn btn-primary btn-md btn-block" %>
     </div>
   </div>
