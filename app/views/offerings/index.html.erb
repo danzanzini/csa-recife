@@ -29,7 +29,7 @@
             <%= offering.location&.name %>
           <% end %>
         </th>
-        <td><%= offering.closes_at.strftime('%d/%m - %A, %H:%M') %></td>
+        <td><%= I18n.l(offering.closes_at, format: '%d/%m - %A, %H:%M') %></td>
 
         <td>
           <%= link_to 'Visualizar', edit_offering_path(offering) %>
