@@ -5,26 +5,26 @@ class Offering < ApplicationRecord
   validates :closes_at, presence: true
 
   def closes_at_date=(date)
-      @closes_at_date = date
-      set_closes_at
-      date
-    end
+    @closes_at_date = date
+    set_closes_at
+    date
+  end
 
-    def closes_at_time=(time)
-      @closes_at_time = "#{time.values[3]}:#{time.values[4]}"
-      set_closes_at
-      time
-    end
+  def closes_at_time=(time)
+    @closes_at_time = "#{time.values[3]}:#{time.values[4]}"
+    set_closes_at
+    time
+  end
 
-    def closes_at_date
-      closes_at&.strftime('%d-%m')
-    end
+  def closes_at_date
+    closes_at&.strftime('%d-%m')
+  end
 
-    def closes_at_time
-      closes_at
-    end
+  def closes_at_time
+    closes_at
+  end
 
-  private
+private
 
     def set_closes_at
       if @closes_at_date && @closes_at_time

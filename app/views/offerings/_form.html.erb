@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <div class="row g-3">
+  <div class="row g-3 pb-3">
     <div class="col-md-5">
       <%= form.label :location_id, 'Local de colheita', class: "form-label" %>
       <%= form.collection_select(:location_id, Location.all, :id, :name, {prompt: false }, { class: 'form-select' }) %>
@@ -24,6 +24,7 @@
       <%= form.label :closes_at_time, 'Encerra às', class: "form-label" %>
       <%= form.time_select :closes_at_time, {minute_step: 15, start_hour: 8, end_hour: 20, time_separator: ''}, { class: "form-select", "aria-label" => 'Encerra às' } %>
     </div>
+  </div>
 
   <div class="actions text-right">
     <%= form.submit submit_label, class: 'btn btn-primary' %>
