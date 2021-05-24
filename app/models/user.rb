@@ -1,10 +1,15 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable,
          :recoverable, :rememberable, :validatable
 
+  ROLES = %w(admin producer supporter)
+
   belongs_to :location
+
+  scope :supporter, -> { where(role: 'supporter') }
+
+  validates :role, inclusion: { in: ROLES }
+  validates :first_name, :last_name, presence: true
 
   def full_name
     "#{first_name} #{last_name}"
