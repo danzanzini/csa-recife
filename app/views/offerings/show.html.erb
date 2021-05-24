@@ -50,14 +50,18 @@
     </div>
   <% end %>
 
+  <div class="mt-2">
+    Adicionar item
+  </div>
+
   <div class="row mb-3">
     <div class="field col-md-4">
-      <%= form.label :product_name, "Produto", class: "form-label" %>
-      <%= form.text_field :product_name, class: "form-control" %>
+      <%= form.label :product_name, "Produto", class: "form-label sr-only" %>
+      <%= form.text_field :product_name, class: "form-control", placeholder: "Produto" %>
     </div>
     <div class="field col-md-4">
-      <%= form.label :amount, "Quantidade", class: "form-label" %>
-      <%= form.text_field :amount, class: "form-control" %>
+      <%= form.label :amount, "Quantidade", class: "form-label sr-only" %>
+      <%= form.number_field :amount, class: "form-control", placeholder: "Quantidade" %>
     </div>
 
     <div class="col-md-4">
