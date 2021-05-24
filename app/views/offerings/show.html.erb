@@ -20,6 +20,10 @@
     <label for="closes_at" class="form-label">Encerra em</label>
     <input type="text" readonly class="form-control" id="closes_at" value="<%= I18n.l(@offering.closes_at, format: '%d/%m (%A) às %H:%M') %>">
   </div>
+  <div class="col-md-4">
+    <label for="status" class="form-label">Status</label>
+    <input type="text" readonly class="form-control" id="status" value="<%= @offering.status %>">
+  </div>
 </div>
 
 <div class="h4 mt-3">

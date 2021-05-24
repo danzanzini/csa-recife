@@ -4,6 +4,11 @@ class Offering < ApplicationRecord
 
   validates :closes_at, presence: true
 
+  def status
+    return 'Encerrada' if Time.zone.now > closes_at
+    published ? 'Publicada' : 'Não publicada'
+  end
+
   def closes_at_date=(date)
     @closes_at_date = date
     set_closes_at

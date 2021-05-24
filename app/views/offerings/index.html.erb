@@ -16,6 +16,7 @@
     <tr>
       <th scope="col">Local de Colheita</th>
       <th scope="col">Encerra em</th>
+      <th scope="col">Status</th>
       <th scope="col">Ações</th>
     </tr>
   </thead>
@@ -30,9 +31,9 @@
           <% end %>
         </th>
         <td><%= I18n.l(offering.closes_at, format: '%d/%m - %A, %H:%M') %></td>
-
+        <td><%= offering.status %></td>
         <td>
-          <%= link_to 'Visualizar', offering %>
+          <u><%= link_to 'Visualizar', offering %></u>
         </td>
       </tr>
     <% end %>
