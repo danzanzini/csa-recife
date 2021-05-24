@@ -1,6 +1,13 @@
-<h1>Editing Offering</h1>
+<p id="notice"><%= notice %></p>
 
-<%= render 'form', offering: @offering %>
+<div class="navbar mb-3">
+  <div class="h3">
+    Editar Oferenda
+  </div>
 
-<%= link_to 'Show', @offering %> |
-<%= link_to 'Back', offerings_path %>
+  <div class="float-right">
+    <%= link_to "Voltar", offerings_path, class: "btn btn-secondary" %>
+  </div>
+</div>
+
+<%= render 'form', offering: @offering, submit_label: 'Salvar' %>
