@@ -5,12 +5,16 @@
     Detalhes da Oferenda
   </div>
 
+
   <div class="float-right">
-    <%= link_to 'Editar', edit_offering_path(@offering), class: 'btn btn-secondary btn-md btn-block' %>
-    <%= link_to 'Voltar', offerings_path, class: 'btn btn-secondary' %>
-    <% unless @offering.published %>
-      <%= button_to 'Publicar', publish_offering_path(@offering), class: 'btn btn-primary float-left' %>
-    <% end %>
+
+  </div>
+  <div class="float-right">
+    <div class="float-left mr-1">
+      <%= button_to "Publicar", publish_offering_path(@offering), class: "btn btn-primary float-right #{publish_button_class(@offering)}" %>
+    </div>
+    <%= link_to "Editar", edit_offering_path(@offering), class: "btn btn-secondary btn-md btn-block" %>
+    <%= link_to "Voltar", offerings_path, class: "btn btn-secondary" %>
   </div>
 </div>
 
@@ -21,7 +25,7 @@
   </div>
   <div class="col-md-4">
     <label for="closes_at" class="form-label">Encerra em</label>
-    <input type="text" readonly class="form-control" id="closes_at" value="<%= I18n.l(@offering.closes_at, format: '%d/%m (%A) às %H:%M') %>">
+    <input type="text" readonly class="form-control" id="closes_at" value="<%= I18n.l(@offering.closes_at, format: "%d/%m (%A) às %H:%M") %>">
   </div>
   <div class="col-md-4">
     <label for="status" class="form-label">Status</label>
@@ -48,16 +52,16 @@
 
   <div class="row mb-3">
     <div class="field col-md-4">
-      <%= form.label :product_name, 'Produto', class: 'form-label' %>
+      <%= form.label :product_name, "Produto", class: "form-label" %>
       <%= form.text_field :product_name, class: "form-control" %>
     </div>
     <div class="field col-md-4">
-      <%= form.label :amount, 'Quantidade', class: 'form-label' %>
+      <%= form.label :amount, "Quantidade", class: "form-label" %>
       <%= form.text_field :amount, class: "form-control" %>
     </div>
 
     <div class="col-md-4">
-      <%= form.submit 'Adicionar item', class: "btn btn-primary btn-md btn-block" %>
+      <%= form.submit "Adicionar item", class: "btn btn-primary btn-md btn-block" %>
     </div>
   </div>
 <% end %>
@@ -80,8 +84,8 @@
         <td><%= offer.amount %></td>
 
         <td>
-          <%= link_to offering_offer_url(@offering.id, offer.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' do %>
-            <i class='fas fa-trash fa-sm'></i>
+          <%= link_to offering_offer_url(@offering.id, offer.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" do %>
+            <i class="fas fa-trash fa-sm"></i>
           <% end %>
         </td>
       </tr>

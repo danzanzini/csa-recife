@@ -5,4 +5,8 @@ module OfferingsHelper
       [I18n.l(day, format: '%A, %d/%m'), day.strftime('%d-%m')]
     end
   end
+
+  def publish_button_class(offering)
+    'disabled' if offering.closed? || offering.published
+  end
 end
