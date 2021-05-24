@@ -29,6 +29,10 @@ class Offering < ApplicationRecord
     closes_at
   end
 
+  def publish!
+    update!(published: true)
+  end
+
 private
 
     def set_closes_at

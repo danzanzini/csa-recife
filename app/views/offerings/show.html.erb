@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<div class="navbar">
+<div class="navbar mb-3">
   <div class="h3">
     Detalhes da Oferenda
   </div>
@@ -8,6 +8,9 @@
   <div class="float-right">
     <%= link_to 'Editar', edit_offering_path(@offering), class: 'btn btn-secondary btn-md btn-block' %>
     <%= link_to 'Voltar', offerings_path, class: 'btn btn-secondary' %>
+    <% unless @offering.published %>
+      <%= button_to 'Publicar', publish_offering_path(@offering), class: 'btn btn-primary float-left' %>
+    <% end %>
   </div>
 </div>
 
