@@ -1,34 +1,32 @@
-class UsersController < ApplicationController
+class SupportersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
 
-  # GET /users or /users.json
   def index
-    @users = User.all
+    @users = User.supporter
   end
 
-  # GET /users/1 or /users/1.json
   def show
   end
 
-  # GET /users/new
   def new
-    @user = User.new
+    @user = User.new(role: 'supporter')
   end
 
-  # GET /users/1/edit
   def edit
   end
 
-  # POST /users or /users.json
   def create
+    byebug
     @user = User.new(user_params)
+    @user.role = 'supporter'
+
     password = SecureRandom.hex
     @user.password = password
     @user.password_confirmation = password
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to users_path, notice: "User was successfully created." }
+        format.html { redirect_to supporters_path, notice: "Apoiador adicionar com sucesso." }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -37,7 +35,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /users/1 or /users/1.json
   def update
     respond_to do |format|
       if @user.update(user_params)

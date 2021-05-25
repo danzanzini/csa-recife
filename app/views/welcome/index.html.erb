@@ -4,7 +4,7 @@ Olá, <%= current_user.first_name %>. O que gostaria de fazer?
 </br>
 
 
-<ul>
+<ul class="text-center">
   <li>
     <%= link_to 'Gerenciar locais de colheita', locations_url,
       class: 'btn btn-sm btn-block btn-primary mb-3' %>
@@ -17,13 +17,13 @@ Olá, <%= current_user.first_name %>. O que gostaria de fazer?
 
   <li>
     <%= link_to 'Gerenciar apoiadores',
-      users_url(only: 'supporter'),
+      supporters_url,
       class: 'btn btn-sm btn-block btn-primary mb-3' %>
   </li>
 
   <li>
     <%= link_to 'Gerenciar gestores',
-      users_url(except: 'supporter'),
+      managers_url,
       class: 'btn btn-sm btn-block btn-primary mb-3' %>
   </li>
 </ul>
