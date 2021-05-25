@@ -2,7 +2,7 @@ class SupportersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
 
   def index
-    @users = User.supporter
+    @users = User.supporter.order(first_name: :asc)
   end
 
   def show

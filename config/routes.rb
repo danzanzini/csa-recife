@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  resources :users, only: [] do
+    member { post :toggle_active }
+  end
+
   resources :supporters, except: [:destroy]
   resources :managers, except: [:destroy]
 
