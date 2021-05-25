@@ -5,10 +5,10 @@ Olá, <%= current_user.first_name %>. O que gostaria de fazer?
 
 
 <ul class="text-center">
-  <li>
+  <!-- li>
     <%= link_to 'Gerenciar locais de colheita', locations_url,
       class: 'btn btn-sm btn-block btn-primary mb-3' %>
-  </li>
+  </li -->
 
   <li>
     <%= link_to 'Gerenciar oferendas', offerings_url,
@@ -21,11 +21,11 @@ Olá, <%= current_user.first_name %>. O que gostaria de fazer?
       class: 'btn btn-sm btn-block btn-primary mb-3' %>
   </li>
 
-  <li>
+  <!-- li>
     <%= link_to 'Gerenciar gestores',
       managers_url,
       class: 'btn btn-sm btn-block btn-primary mb-3' %>
-  </li>
+  </li -->
 </ul>
 
 <%= button_to "Sair", destroy_user_session_url, data: { confirm: "Tem certeza que deseja sair?" }, method: :delete, class: 'btn btn-lg btn-block' %>

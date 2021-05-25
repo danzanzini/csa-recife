@@ -16,7 +16,6 @@ class SupportersController < ApplicationController
   end
 
   def create
-    byebug
     @user = User.new(user_params)
     @user.role = 'supporter'
 

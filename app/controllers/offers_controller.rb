@@ -23,7 +23,7 @@ class OffersController < ApplicationController
     @offer.destroy!
     redirect_to(
       offering_url(@offering),
-      notice: "Offer was successfully destroyed."
+      notice: "Produto adicionado com sucesso."
     )
   end
 
