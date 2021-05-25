@@ -1,0 +1,52 @@
+<%= form_with model: user, url: managers_path do |form| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row g-3 pb-3">
+    <div class="col-md-4">
+      <%= form.label :first_name, 'Nome', class: "form-label" %>
+      <%= form.text_field :first_name, class: "form-control",
+        placeholder: "Nome", 'aria-label' => "Nome" %>
+    </div>
+    <div class="col-md-4">
+      <%= form.label :last_name, 'Sobrenome', class: "form-label" %>
+      <%= form.text_field :last_name, class: "form-control",
+        placeholder: "Sobrenome", 'aria-label' => "Sobrenome" %>
+    </div>
+    <div class="col-md-4">
+      <%= form.label :active, 'Status', class: "form-label" %>
+      <%= form.text_field :active, class: "form-control", readonly: true, 'aria-label' => "Active", value: user_status(user.active) %>
+    </div>
+    <div class="col-md-6">
+      <%= form.label :role, 'Atribuição', class: "form-label" %>
+      <%= form.select :role, role_positions, { pompt: false }, class: "form-select", 'aria-label' => "Atribuição" %>
+    </div>
+    <div class="col-md-6">
+      <%= form.label :email, 'E-mail', class: "form-label" %>
+      <%= form.text_field :email, class: "form-control",
+        placeholder: "E-mail", 'aria-label' => "E-mail" %>
+    </div>
+    <div class="col-md-6">
+      <%= form.label :location_id, 'Local de colheita', class: "form-label" %>
+      <%= form.collection_select(:location_id, Location.all, :id, :name, {prompt: 'Escolha um local de colheita'}, { class: 'form-select' }) %>
+    </div>
+    <div class="col-md-6">
+      <%= form.label :items_per_harvest, 'Itens por colheita', class: "form-label" %>
+      <%= form.number_field :items_per_harvest, min: 1, class: "form-control",
+        placeholder: "Itens por colheita", 'aria-label' => "E-mail" %>
+    </div>
+  </div>
+
+  <div class="actions text-right">
+    <%= form.submit 'Salvar gestor', class: "btn btn-primary" %>
+  </div>
+<% end %>

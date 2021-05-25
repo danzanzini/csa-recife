@@ -1,0 +1,1 @@
+- Editar gestores e apoiadores não funciona

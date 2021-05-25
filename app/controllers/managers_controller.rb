@@ -1,15 +1,15 @@
-class SupportersController < ApplicationController
+class ManagersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
 
   def index
-    @users = User.supporter.order(first_name: :asc)
+    @users = User.manager.order(first_name: :asc)
   end
 
   def show
   end
 
   def new
-    @user = User.new(role: 'supporter')
+    @user = User.new
   end
 
   def edit
@@ -17,7 +17,6 @@ class SupportersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.role = 'supporter'
 
     password = SecureRandom.hex
     @user.password = password
@@ -25,7 +24,7 @@ class SupportersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to supporters_path, notice: "Apoiador adicionar com sucesso." }
+        format.html { redirect_to managers_path, notice: "Gestor adicionar com sucesso." }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -49,13 +48,13 @@ class SupportersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.supporter.find(params[:id])
+      @user = User.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def user_params
       params.require(:user).permit(
-        :first_name, :last_name, :email, :location_id, :items_per_harvest
+        :first_name, :last_name, :email, :location_id, :items_per_harvest, :role
       )
     end
 end

@@ -1,0 +1,17 @@
+<div class="navbar">
+  <div class="h3 float-left">
+    Editar Gestor
+  </div>
+
+  <div class='float-right'>
+    <div class="float-left mr-1">
+      <%= button_to( status_button_label(@user.active),
+        toggle_active_user_path(@user),
+        class: 'btn btn-primary'
+      ) %>
+    </div>
+    <%= link_to 'Voltar', managers_path, class: 'btn btn-secondary' %>
+  </div>
+</div>
+
+<%= render 'form', user: @user %>
