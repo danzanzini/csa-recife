@@ -4,6 +4,9 @@ class Offering < ApplicationRecord
 
   validates :closes_at, presence: true
 
+  scope :not_closed, -> { where("closes_at > ?", Time.zone.now) }
+  scope :by_location, -> (location) { where(location: location) }
+
   def status
     return 'Encerrada' if closed?
     published ? 'Publicada' : 'Não publicada'

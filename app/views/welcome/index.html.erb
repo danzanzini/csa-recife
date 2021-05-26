@@ -26,6 +26,12 @@ Olá, <%= current_user.first_name %>. O que gostaria de fazer?
       managers_url,
       class: 'btn btn-sm btn-block btn-primary mb-3' %>
   </li>
+
+  <li>
+    <%= link_to new_harvest_button_label,
+    new_harvest_url,
+    class: "btn btn-sm btn-block btn-primary mb-3 #{new_harvest_button_class}" %>
+  </li>
 </ul>
 
 <%= button_to "Sair", destroy_user_session_url, data: { confirm: "Tem certeza que deseja sair?" }, method: :delete, class: 'btn btn-lg btn-block' %>
