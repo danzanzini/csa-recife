@@ -8,6 +8,10 @@ class Offer < ApplicationRecord
   validates :amount, numericality: { greater_than: 0}
   validates :product_name, uniqueness: { scope: :offering_id }
 
+  def self.product_names
+    pluck(:product_name)
+  end
+
 private
 
   def normalize_product_name

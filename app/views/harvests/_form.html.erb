@@ -11,5 +11,20 @@
     </div>
   <% end %>
 
-Aqui vai fazer uma nova colheita
+  <%= form.fields_for :harvested_products do |f| %>
+    <div class="row mb-3">
+      <div class="field col-md-4 col-sm-2">
+        <%= f.label :product_name, "Produto", class: "form-label sr-only" %>
+        <%= f.text_field :product_name, class: "form-control", placeholder: "Produto", disabled: true %>
+      </div>
+      <div class="field col-md-4 col-sm-2">
+        <%= f.label :amount, "Quantidade", class: "form-label sr-only" %>
+        <%= f.number_field :amount, class: "form-control", placeholder: "Quantidade", min: 0, max: 5 %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="col-md-4">
+    <%= form.submit "Salvar pedido", class: "btn btn-primary btn-md btn-block" %>
+  </div>
 <% end %>

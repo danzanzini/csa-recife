@@ -12,7 +12,7 @@ class HarvestsController < ApplicationController
 
   # GET /harvests/new
   def new
-    @harvest = Harvest.new
+    @harvest = Harvest.new_from(current_offering)
   end
 
   # GET /harvests/1/edit

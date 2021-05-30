@@ -12,6 +12,10 @@ class Offering < ApplicationRecord
     published ? 'Publicada' : 'Não publicada'
   end
 
+  def offers_list
+    offers.product_names
+  end
+
   def closed?
     Time.zone.now > closes_at
   end
