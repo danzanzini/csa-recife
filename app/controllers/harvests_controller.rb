@@ -22,10 +22,12 @@ class HarvestsController < ApplicationController
   # POST /harvests or /harvests.json
   def create
     @harvest = Harvest.new(harvest_params)
+    @harvest.offering = current_offering
+    @harvest.user = current_user
 
     respond_to do |format|
       if @harvest.save
-        format.html { redirect_to @harvest, notice: "Harvest was successfully created." }
+        format.html { redirect_to @harvest, notice: "Pedido realizado com sucesso." }
         format.json { render :show, status: :created, location: @harvest }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -64,6 +66,8 @@ class HarvestsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def harvest_params
-      params.require(:harvest).permit(:user_id)
+      params.require(:harvest).permit(:user_id,
+        harvested_products_attributes: [:product_name, :amount]
+      )
     end
 end

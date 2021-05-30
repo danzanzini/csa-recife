@@ -1,6 +1,8 @@
 class Offering < ApplicationRecord
   belongs_to :location
   has_many :offers, dependent: :destroy
+  has_many :harvests
+  has_many :harvested_products, through: :harvests
 
   validates :closes_at, presence: true
 
@@ -18,6 +20,11 @@ class Offering < ApplicationRecord
 
   def closed?
     Time.zone.now > closes_at
+  end
+
+  def available_amount_for(product_name)
+    offers.where(product_name: product_name).sum(:amount) -
+    harvested_products.where(product_name: product_name).sum(:amount)
   end
 
   def closes_at_date=(date)
