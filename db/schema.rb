@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_28_000252) do
+ActiveRecord::Schema.define(version: 2021_05_30_213431) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "harvested_products", id: false, force: :cascade do |t|
+  create_table "harvested_products", force: :cascade do |t|
     t.bigint "harvest_id"
     t.bigint "product_id"
     t.integer "amount"
