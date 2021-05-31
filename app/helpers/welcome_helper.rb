@@ -1,9 +1,27 @@
 module WelcomeHelper
-  def new_harvest_button_label
-    current_offering&.published ? 'Realizar Colheita' : 'Não há oferendas disponíveis'
+
+  def harvest_button
+    return disabled_button if !current_offering
+    current_harvest ? edit_harvest_button : new_harvest_button
   end
 
-  def new_harvest_button_class
-    'disabled' unless current_offering&.published
+  def disabled_button
+    link_to('Não há oferendas disponíveis', '#',
+      class: "btn btn-sm btn-block btn-primary mb-3 disabled"
+    )
+  end
+
+  def new_harvest_button
+    link_to('Realizar Pedido',
+      new_harvest_url,
+      class: "btn btn-sm btn-block btn-primary mb-3"
+    )
+  end
+
+  def edit_harvest_button
+    link_to('Editar pedido realizado',
+      edit_harvest_url(current_harvest),
+      class: "btn btn-sm btn-block btn-primary mb-3"
+    )
   end
 end

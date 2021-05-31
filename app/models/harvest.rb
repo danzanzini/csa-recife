@@ -4,6 +4,8 @@ class Harvest < ApplicationRecord
 
   has_many :harvested_products
 
+  scope :by_user, -> (user) { where(user: user) }
+
   accepts_nested_attributes_for :harvested_products
 
   validate :user_amount

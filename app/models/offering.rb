@@ -8,6 +8,12 @@ class Offering < ApplicationRecord
 
   scope :not_closed, -> { where("closes_at > ?", Time.zone.now) }
   scope :by_location, -> (location) { where(location: location) }
+  scope :published, -> { where(published: true) }
+  scope :active, -> { not_closed.published }
+
+  def harvested_by(user)
+    harvests.by_user(user).last
+  end
 
   def status
     return 'Encerrada' if closed?
