@@ -29,11 +29,13 @@ Olá, <%= current_user.first_name %>. O que gostaria de fazer?
 
   <li><%= harvest_button %></li>
 
-  <li>
-    <%= link_to 'Ver último pedido realizado',
-      current_user.harvests.last,
-      class: 'btn btn-sm btn-block btn-primary mb-3' %>
-  </li>
+  <% if current_user.harvests.last %>
+    <li>
+      <%= link_to 'Ver último pedido realizado',
+        current_user.harvests.last,
+        class: 'btn btn-sm btn-block btn-primary mb-3' %>
+    </li>
+  <% end %>
 </ul>
 
 <%= button_to "Sair", destroy_user_session_url, data: { confirm: "Tem certeza que deseja sair?" }, method: :delete, class: 'btn btn-lg btn-block' %>
