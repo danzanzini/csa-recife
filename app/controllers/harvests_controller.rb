@@ -40,7 +40,7 @@ class HarvestsController < ApplicationController
   def update
     respond_to do |format|
       if @harvest.update(harvest_params)
-        format.html { redirect_to @harvest, notice: "Harvest was successfully updated." }
+        format.html { redirect_to @harvest, notice: "Pedido editado com sucesso." }
         format.json { render :show, status: :ok, location: @harvest }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -66,8 +66,8 @@ class HarvestsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def harvest_params
-      params.require(:harvest).permit(:user_id,
-        harvested_products_attributes: [:product_name, :amount]
+      params.require(:harvest).permit(
+        harvested_products_attributes: [:id, :product_name, :amount]
       )
     end
 end

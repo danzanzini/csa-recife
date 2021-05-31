@@ -22,7 +22,7 @@
       Quantidade pedida
     </div>
   </div>
-  <%= form.fields_for :harvested_products do |f| %>
+  <%= form.fields_for :harvested_products, form.object.harvested_products.order(product_name: :asc) do |f| %>
     <div class="row mb-3">
       <div class="field col-6">
         <%= f.label :product_name, "Produto", class: "form-label sr-only" %>
