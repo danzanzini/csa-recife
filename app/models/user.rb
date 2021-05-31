@@ -6,6 +6,7 @@ class User < ApplicationRecord
   MANAGER_ROLES = %w(admin producer)
 
   belongs_to :location
+  has_many :harvests
 
   scope :supporter, -> { where(role: 'supporter') }
   scope :manager, -> { where.not(role: 'supporter') }
