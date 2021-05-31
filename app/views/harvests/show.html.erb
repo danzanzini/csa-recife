@@ -1,9 +1,31 @@
+<div class="navbar">
+  <div class="h3 float-left">
+    Pedido realizado
+  </div>
+
+  <%= link_to 'Voltar', root_path, class: 'btn btn-secondary float-right' %>
+</div>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @harvest.user_id %>
+<p class="mt-1 mb-2">
+  <b>Pedido feito em:</b><%= @harvest.created_at.strftime(' %d/%m às %H:%M') %>
 </p>
 
-<%= link_to 'Edit', edit_harvest_path(@harvest) %> |
-<%= link_to 'Back', harvests_path %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Produto</th>
+      <th scope="col">Quantidade</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @harvest.harvested_products.with_amount.each do |product| %>
+      <tr>
+        <th scope="row"><%= product.product_name %></th>
+        <td><%= product.amount %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

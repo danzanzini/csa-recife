@@ -1,6 +1,8 @@
 class HarvestedProduct < ApplicationRecord
   belongs_to :harvest
 
+  scope :with_amount, -> { where('amount > 0') }
+
   validates :amount, :product_name, presence: true
   validates :amount, numericality: { greater_or_equal_than: 0 }
   # validates :product_name, uniqueness: { scope: :offering_id }
