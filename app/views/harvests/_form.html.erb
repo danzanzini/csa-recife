@@ -11,28 +11,28 @@
     </div>
   <% end %>
 
-  <div class="row mb-3 h6 mt-3">
-    <div class="field col-md-8">
+  <div class="row h6 mt-3">
+    <div class="field col-6">
       Produto
     </div>
-    <div class="field col-md-2">
+    <div class="field col">
       Quantidade disponível
     </div>
-    <div class="field col-md-2">
+    <div class="field col">
       Quantidade pedida
     </div>
   </div>
   <%= form.fields_for :harvested_products do |f| %>
     <div class="row mb-3">
-      <div class="field col-md-8">
+      <div class="field col-6">
         <%= f.label :product_name, "Produto", class: "form-label sr-only" %>
         <%= f.text_field :product_name, class: "form-control", placeholder: "Produto", readonly: true %>
       </div>
-      <div class="field col-md-2">
+      <div class="field col">
         <label for="available_amount" class="form-label sr-only">Quantide disponível</label>
         <input type="text" readonly class="form-control" id="available_amount" value="<%= available_amount_for(f.object.product_name) %>">
       </div>
-      <div class="field col-md-2">
+      <div class="field col">
         <%= f.label :amount, "Quantidade", class: "form-label sr-only" %>
         <%= f.number_field :amount, class: "form-control", placeholder: "Quantidade", min: 0 %>
       </div>
