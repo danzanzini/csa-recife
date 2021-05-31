@@ -2,7 +2,7 @@ module OfferingsHelper
 
   def seven_days_from_now
     (Time.zone.today..Time.zone.today + 7).map do |day|
-      [I18n.l(day, format: '%A, %d/%m'), day.strftime('%d-%m')]
+      [I18n.l(day, format: '%A, %d/%m'), day.strftime('%d-%m-%Y')]
     end
   end
 
