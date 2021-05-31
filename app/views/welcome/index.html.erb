@@ -10,22 +10,24 @@ Olá, <%= current_user.first_name %>. O que gostaria de fazer?
       class: 'btn btn-sm btn-block btn-primary mb-3' %>
   </li -->
 
-  <li>
-    <%= link_to 'Gerenciar oferendas', offerings_url,
-      class: 'btn btn-sm btn-block btn-primary  mb-3' %>
-  </li>
+  <% if !current_user.supporter? %>
+    <li>
+      <%= link_to 'Gerenciar oferendas', offerings_url,
+        class: 'btn btn-sm btn-block btn-primary  mb-3' %>
+    </li>
 
-  <li>
-    <%= link_to 'Gerenciar apoiadores',
-      supporters_url,
-      class: 'btn btn-sm btn-block btn-primary mb-3' %>
-  </li>
+    <li>
+      <%= link_to 'Gerenciar apoiadores',
+        supporters_url,
+        class: 'btn btn-sm btn-block btn-primary mb-3' %>
+    </li>
 
-  <li>
-    <%= link_to 'Gerenciar gestores',
-      managers_url,
-      class: 'btn btn-sm btn-block btn-primary mb-3' %>
-  </li>
+    <li>
+      <%= link_to 'Gerenciar gestores',
+        managers_url,
+        class: 'btn btn-sm btn-block btn-primary mb-3' %>
+    </li>
+  <% end %>
 
   <li><%= harvest_button %></li>
 

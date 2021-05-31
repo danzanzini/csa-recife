@@ -3,7 +3,7 @@ class HarvestsController < ApplicationController
 
   # GET /harvests or /harvests.json
   def index
-    @harvests = Harvest.all
+    # @harvests = Harvest.all
   end
 
   # GET /harvests/1 or /harvests/1.json
@@ -12,11 +12,18 @@ class HarvestsController < ApplicationController
 
   # GET /harvests/new
   def new
-    @harvest = Harvest.new_from(current_offering)
+    if !current_offering
+      redirect_to root_path, notice: 'Não há oferendas abertas'
+    else
+      @harvest = Harvest.new_from(current_offering)
+    end
   end
 
   # GET /harvests/1/edit
   def edit
+    if @harvest.offering.closed?
+      redirect_to root_path, notice: 'Não há oferendas abertas'
+    end
   end
 
   # POST /harvests or /harvests.json
@@ -61,7 +68,7 @@ class HarvestsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_harvest
-      @harvest = Harvest.find(params[:id])
+      @harvest = current_user.harvests.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
@@ -70,4 +77,5 @@ class HarvestsController < ApplicationController
         harvested_products_attributes: [:id, :product_name, :amount]
       )
     end
+
 end
