@@ -20,7 +20,7 @@ class Harvest < ApplicationRecord
 private
   def self.products_from(offers_list)
     offers_list.map do |offer_item|
-      HarvestedProduct.new(product_name: offer_item, amount: 0)
+      HarvestedProduct.new(product_name: offer_item)
     end
   end
 

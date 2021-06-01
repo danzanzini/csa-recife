@@ -26,15 +26,15 @@
     <div class="row mb-3">
       <div class="field col-6">
         <%= f.label :product_name, "Produto", class: "form-label sr-only" %>
-        <%= f.text_field :product_name, class: "form-control", placeholder: "Produto", readonly: true %>
+        <%= f.text_field :product_name, class: "form-control", placeholder: "Produto", readonly: true, tabindex: -1 %>
       </div>
       <div class="field col">
         <label for="available_amount" class="form-label sr-only">Quantide disponível</label>
-        <input type="text" readonly class="form-control" id="available_amount" value="<%= available_amount_for(f.object.product_name) %>">
+        <input type="text" readonly class="form-control" id="available_amount" value="<%= available_amount_for(f.object.product_name) %>" tabindex="-1">
       </div>
       <div class="field col">
         <%= f.label :amount, "Quantidade", class: "form-label sr-only" %>
-        <%= f.number_field :amount, class: "form-control", placeholder: "Quantidade", min: 0 %>
+        <%= f.number_field :amount, class: "form-control", placeholder: "0", min: 0 %>
       </div>
     </div>
   <% end %>
