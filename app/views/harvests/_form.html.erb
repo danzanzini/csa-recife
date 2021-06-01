@@ -1,11 +1,9 @@
 <%= form_with(model: harvest) do |form| %>
   <% if harvest.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(harvest.errors.count, "error") %> prohibited this harvest from being saved:</h2>
-
       <ul>
         <% harvest.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <li><%= error.message %></li>
         <% end %>
       </ul>
     </div>
@@ -34,7 +32,12 @@
       </div>
       <div class="field col">
         <%= f.label :amount, "Quantidade", class: "form-label sr-only" %>
-        <%= f.number_field :amount, class: "form-control", placeholder: "0", min: 0 %>
+        <%= f.number_field :amount, placeholder: "0", min: 0,
+          class: "form-control #{invalid_class(f.object, 'amount')}"
+        %>
+        <!-- div class="invalid-feedback">
+          <%= f.object.errors[:amount].first %>
+        </div -->
       </div>
     </div>
   <% end %>
