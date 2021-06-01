@@ -25,7 +25,7 @@ private
   end
 
   def user_amount
-    total_amount = harvested_products.reduce(0){ |sum, hp| sum + hp.amount }
+    total_amount = harvested_products.reduce(0){ |sum, hp| sum + hp.amount.to_i }
 
     if total_amount > user.items_per_harvest
       errors.add(:base, "Você escolheu mais itens que o disponível")
