@@ -3,8 +3,11 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :users, only: [] do
+  resources :users, only: [:update] do
     member { post :toggle_active }
+    collection do
+      get :edit_password
+    end
   end
 
   resources :supporters, except: [:destroy]

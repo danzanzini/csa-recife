@@ -38,6 +38,13 @@ Olá, <%= current_user.first_name %>. O que gostaria de fazer?
         class: 'btn btn-sm btn-block btn-primary mb-3' %>
     </li>
   <% end %>
+
+  <li>
+    <%= link_to 'Editar senha',
+      edit_password_users_url,
+      class: 'btn btn-sm btn-block btn-primary mb-3' %>
+  </li>
+
 </ul>
 
 <%= button_to "Sair", destroy_user_session_url, data: { confirm: "Tem certeza que deseja sair?" }, method: :delete, class: 'btn btn-lg btn-block' %>
