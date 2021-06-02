@@ -17,6 +17,5 @@ Rails.application.routes.draw do
   resources :harvests
   resources :offerings do
     member { post :publish }
-    resources :offers, only: [:create, :update, :destroy]
   end
 end
