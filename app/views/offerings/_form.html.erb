@@ -26,6 +26,39 @@
     </div>
   </div>
 
+  <h5 class="h5">Produtos disponíveis</h5>
+
+  <div class="row h6 mt-3">
+    <div class="field col-5">
+      Produto
+    </div>
+    <div class="field col-4">
+      Quantidade disponível
+    </div>
+  </div>
+
+  <div class="row g-3 pb-3">
+    <%= form.fields_for :offers do |subform| %>
+      <div class="col-5">
+        <%= subform.label :product_name, 'Nome do produto', class: "form-label sr-only", placeholder: "Produto" %>
+        <%= subform.text_field :product_name, class: "form-control" %>
+      </div>
+      <div class="field col-4">
+        <%= subform.label :amount, "Quantidade", class: "form-label sr-only" %>
+        <%= subform.number_field :amount, class: "form-control", placeholder: "Quantidade" %>
+      </div>
+      <div class="field col-3">
+        <%= subform.label :_destroy  do %>
+          <%= subform.check_box :_destroy %> Remover produto
+        <% end %>
+      </div>
+
+
+    <% end %>
+  </div>
+
+
+
   <div class="actions text-right">
     <%= form.submit submit_label, class: 'btn btn-primary' %>
   </div>

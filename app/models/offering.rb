@@ -11,6 +11,8 @@ class Offering < ApplicationRecord
   scope :published, -> { where(published: true) }
   scope :active, -> { not_closed.published }
 
+  accepts_nested_attributes_for :offers, allow_destroy: true
+
   def harvested_by(user)
     harvests.by_user(user).last
   end

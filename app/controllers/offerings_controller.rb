@@ -71,7 +71,8 @@ class OfferingsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def offering_params
       params.require(:offering).permit(
-        :location_id, :closes_at_date, :closes_at_time, :closes_at
+        :location_id, :closes_at_date, :closes_at_time, :closes_at,
+        offers_attributes: [:id, :product_name, :amount, :_destroy]
       )
     end
 end
