@@ -2,21 +2,21 @@ class ManagersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
 
   def index
-    @users = User.manager.order(first_name: :asc)
+    @users = Manager.order(first_name: :asc)
   end
 
   def show
   end
 
   def new
-    @user = User.new
+    @user = Manager.new
   end
 
   def edit
   end
 
   def create
-    @user = User.new(user_params)
+    @user = Manager.new(manager_params)
 
     password = SecureRandom.hex
     @user.password = password
@@ -35,8 +35,8 @@ class ManagersController < ApplicationController
 
   def update
     respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: "User was successfully updated." }
+      if @user.update(manager_params)
+        format.html { redirect_to managers_path, notice: "Gestor atualizado com sucesso." }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -48,12 +48,12 @@ class ManagersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      @user = Manager.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
-    def user_params
-      params.require(:user).permit(
+    def manager_params
+      params.require(:manager).permit(
         :first_name, :last_name, :email, :location_id, :items_per_harvest, :role
       )
     end

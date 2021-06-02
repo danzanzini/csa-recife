@@ -2,21 +2,21 @@ class SupportersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
 
   def index
-    @users = User.supporter.order(first_name: :asc)
+    @users = Supporter.order(first_name: :asc)
   end
 
   def show
   end
 
   def new
-    @user = User.new(role: 'supporter')
+    @user = Supporter.new(role: 'supporter')
   end
 
   def edit
   end
 
   def create
-    @user = User.new(user_params)
+    @user = Supporter.new(supporter_params)
     @user.role = 'supporter'
 
     password = SecureRandom.hex
@@ -25,7 +25,7 @@ class SupportersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to supporters_path, notice: "Apoiador adicionar com sucesso." }
+        format.html { redirect_to supporters_path, notice: "Apoiador adicionado com sucesso." }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -36,8 +36,8 @@ class SupportersController < ApplicationController
 
   def update
     respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: "User was successfully updated." }
+      if @user.update(supporter_params)
+        format.html { redirect_to supporters_path, notice: "Apoiador editado com sucesso." }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -49,12 +49,12 @@ class SupportersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.supporter.find(params[:id])
+      @user = Supporter.supporter.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
-    def user_params
-      params.require(:user).permit(
+    def supporter_params
+      params.require(:supporter).permit(
         :first_name, :last_name, :email, :location_id, :items_per_harvest
       )
     end
