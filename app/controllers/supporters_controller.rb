@@ -19,10 +19,6 @@ class SupportersController < ApplicationController
     @user = Supporter.new(supporter_params)
     @user.role = 'supporter'
 
-    password = SecureRandom.hex
-    @user.password = password
-    @user.password_confirmation = password
-
     respond_to do |format|
       if @user.save
         format.html { redirect_to supporters_path, notice: "Apoiador adicionado com sucesso." }
