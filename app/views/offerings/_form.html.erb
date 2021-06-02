@@ -38,7 +38,7 @@
   </div>
 
   <div id='offers' class="row g-3 pb-3">
-    <%= form.fields_for :offers do |offer_form| %>
+    <%= form.fields_for :offers, ordered_products(form.object.offers) do |offer_form| %>
       <%= render 'offer_fields', form: offer_form %>
     <% end %>
   </div>

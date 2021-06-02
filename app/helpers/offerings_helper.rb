@@ -9,4 +9,8 @@ module OfferingsHelper
   def publish_button_class(offering)
     'disabled' if offering.closed? || offering.published
   end
+
+  def ordered_products(products)
+    products.sort { |a, b| a.product_name <=> b.product_name }
+  end
 end
