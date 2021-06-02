@@ -37,29 +37,18 @@
     </div>
   </div>
 
-  <div class="row g-3 pb-3">
-    <%= form.fields_for :offers do |subform| %>
-      <div class="col-5">
-        <%= subform.label :product_name, 'Nome do produto', class: "form-label sr-only", placeholder: "Produto" %>
-        <%= subform.text_field :product_name, class: "form-control" %>
-      </div>
-      <div class="field col-4">
-        <%= subform.label :amount, "Quantidade", class: "form-label sr-only" %>
-        <%= subform.number_field :amount, class: "form-control", placeholder: "Quantidade" %>
-      </div>
-      <div class="field col-3">
-        <%= subform.label :_destroy  do %>
-          <%= subform.check_box :_destroy %> Remover produto
-        <% end %>
-      </div>
-
-
+  <div id='offers' class="row g-3 pb-3">
+    <%= form.fields_for :offers do |offer_form| %>
+      <%= render 'offer_fields', form: offer_form %>
     <% end %>
   </div>
 
-
-
   <div class="actions text-right">
+    <%= link_to_add_nested(form, :offers, '#offers',
+      link_classes: 'btn btn-secondary',
+      link_text: 'Adicionar produto'
+    ) %>
+
     <%= form.submit submit_label, class: 'btn btn-primary' %>
   </div>
 <% end %>
