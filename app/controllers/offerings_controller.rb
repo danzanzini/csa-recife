@@ -13,7 +13,7 @@ class OfferingsController < ApplicationController
 
   # GET /offerings/new
   def new
-    @offering = Offering.new
+    @offering = Offering.new(offers: Offer.default_set)
   end
 
   # GET /offerings/1/edit
@@ -65,7 +65,7 @@ class OfferingsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_offering
-      @offering = Offering.find(params[:id])
+      @offering = Offering.includes(:offers).find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
