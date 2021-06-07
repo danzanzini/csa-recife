@@ -4,8 +4,10 @@ class Offer < ApplicationRecord
 
   before_validation :normalize_product_name
 
-  validates :amount, :product_name, presence: true
-  validates :amount, numericality: { greater_than: 0 }
+  scope :with_amount, -> { where('amount > 0') }
+
+  validates :product_name, presence: true
+  validates :amount, numericality: { greater_or_equal_than: 0 }, allow_blank: true
   validates :product_name, uniqueness: { scope: :offering_id }
 
   def self.product_names

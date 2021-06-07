@@ -23,7 +23,7 @@ class Offering < ApplicationRecord
   end
 
   def offers_list
-    offers.product_names
+    offers.with_amount.product_names
   end
 
   def closed?
