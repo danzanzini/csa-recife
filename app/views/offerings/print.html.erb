@@ -1,0 +1,9 @@
+<% @offering.harvests.each do |harvest| %>
+  <p>
+    <b><%= harvest.user.full_name %>:</b> <%= products_and_count(harvest) %>
+  </p>
+<% end %>
+</br>
+<hr>
+<p><b>Resumo</b></p>
+<p><%= harvests_total(@offering.harvests) %>

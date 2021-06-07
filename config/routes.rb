@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   resources :locations
   resources :harvests
   resources :offerings do
-    member { post :publish }
+    member do
+      post :publish
+      get :print
+    end
   end
 end

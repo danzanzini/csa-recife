@@ -1,5 +1,5 @@
 class OfferingsController < ApplicationController
-  before_action :set_offering, only: %i[ show edit update destroy publish]
+  before_action :set_offering, only: %i[ show edit update destroy publish print]
 
   # GET /offerings or /offerings.json
   def index
@@ -60,6 +60,9 @@ class OfferingsController < ApplicationController
   def publish
     @offering.publish!
     redirect_to @offering, notice: "Oferenda publicada com sucesso."
+  end
+
+  def print
   end
 
   private
