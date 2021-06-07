@@ -12,7 +12,7 @@ class HarvestedProduct < ApplicationRecord
   delegate :offering, to: :harvest, allow_nil: true
 
   def self.product_names
-    pluck(:product_name)
+    pluck(:product_name).uniq
   end
 
 private

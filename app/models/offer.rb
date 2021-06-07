@@ -11,11 +11,11 @@ class Offer < ApplicationRecord
   validates :product_name, uniqueness: { scope: :offering_id }
 
   def self.product_names
-    pluck(:product_name)
+    pluck(:product_name).uniq
   end
 
   def self.default_set
-    pluck(:product_name).sort.map { |product| new(product_name: product) }
+    product_names.sort.map { |product| new(product_name: product) }
   end
 
 private
