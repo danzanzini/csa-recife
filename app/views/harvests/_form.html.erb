@@ -10,35 +10,41 @@
   <% end %>
 
   <div class="row h6 mt-3">
-    <div class="field col-6">
+    <div class="field col-5">
       Produto
     </div>
-    <div class="field col">
+    <div class="field col-3">
       Quantidade disponível
     </div>
-    <div class="field col">
+    <div class="field col-4">
       Quantidade pedida
     </div>
   </div>
   <%= form.fields_for :harvested_products, ordered_products(form.object.harvested_products) do |f| %>
     <div class="row mb-3">
-      <div class="field col-6">
+      <div class="field col-5">
         <%= f.label :product_name, "Produto", class: "form-label sr-only" %>
         <%= f.text_field :product_name, class: "form-control", placeholder: "Produto", readonly: true, tabindex: -1 %>
       </div>
-      <div class="field col">
+      <div class="field col-3">
         <label for="available_amount" class="form-label sr-only">Quantide disponível</label>
         <input type="text" readonly class="form-control" id="available_amount" value="<%= available_amount_for(f.object.product_name) %>" tabindex="-1">
       </div>
-      <div class="field col">
+      <div class="field col-4">
         <%= f.label :amount, "Quantidade", class: "form-label sr-only" %>
-        <%= f.number_field :amount, placeholder: "0", min: 0,
-          class: "form-control #{invalid_class(f.object, 'amount')}"
-        %>
+        <div class="input-group">
+          <button data-action="decrement" class="btn btn-outline-primary" type="button" id="inputGroupFileAddon04">-</button>
+          <%= f.number_field :amount, placeholder: "0", min: 0,
+            class: "form-control #{invalid_class(f.object, 'amount')}"
+          %>
+          <button data-action="increment" class="btn btn-outline-primary" type="button" id="inputGroupFileAddon04">+</button>
+        </div>
+
         <!-- div class="invalid-feedback">
           <%= f.object.errors[:amount].first %>
         </div -->
       </div>
+
     </div>
   <% end %>
 
