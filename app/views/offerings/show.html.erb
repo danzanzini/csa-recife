@@ -43,7 +43,7 @@
   </thead>
 
   <tbody>
-    <% @offering.offers.order(product_name: :asc).each do |offer| %>
+    <% @offering.offers.with_amount.order(product_name: :asc).each do |offer| %>
       <tr>
         <th scope="row">
           <%= offer.product_name %>
