@@ -48,7 +48,7 @@ class Offering < ApplicationRecord
   end
 
   def closes_at_date
-    closes_at&.strftime('%d-%m')
+    closes_at&.strftime('%d-%m-%Y')
   end
 
   def closes_at_time
