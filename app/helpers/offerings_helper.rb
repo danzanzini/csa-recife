@@ -19,4 +19,10 @@ module OfferingsHelper
       "#{hp.product_name} (#{hp.amount})"
     end.join(', ')
   end
+
+  def harvests_total(harvested_products)
+    harvested_products.group_by(&:product_name).map do |product_name, group|
+      "#{product_name} (#{group.reduce(0){ |sum, hp| sum + hp.amount.to_i }})"
+    end.join(', ')
+  end
 end
