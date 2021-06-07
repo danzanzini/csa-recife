@@ -8,6 +8,7 @@
   <div class="float-right">
     <div class="float-left mr-1">
       <%= button_to "Publicar", publish_offering_path(@offering), class: "btn btn-primary float-right #{publish_button_class(@offering)}" %>
+      <%= link_to "Imprimir", print_offering_path(@offering), class: "btn btn-primary float-right", target: '_blank' %>
     </div>
     <%= link_to "Editar", edit_offering_path(@offering), class: "btn btn-secondary btn-md btn-block" %>
     <%= link_to "Voltar", offerings_path, class: "btn btn-secondary" %>
