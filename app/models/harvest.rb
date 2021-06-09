@@ -5,6 +5,7 @@ class Harvest < ApplicationRecord
   has_many :harvested_products
 
   scope :by_user, -> (user) { where(user: user) }
+  scope :ordered_by_user, -> { joins(:user).order('users.first_name asc') }
 
   accepts_nested_attributes_for :harvested_products
 
