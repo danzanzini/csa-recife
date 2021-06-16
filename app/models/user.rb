@@ -24,6 +24,10 @@ class User < ApplicationRecord
     role == 'supporter'
   end
 
+  def manager?
+    MANAGER_ROLES.include?(role)
+  end
+
 private
   def set_password
     if password.blank?

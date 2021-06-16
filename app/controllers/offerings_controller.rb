@@ -1,4 +1,5 @@
 class OfferingsController < ApplicationController
+  before_action :ensure_manager
   before_action :set_offering, only: %i[ show edit update destroy publish print]
 
   # GET /offerings or /offerings.json
@@ -66,6 +67,11 @@ class OfferingsController < ApplicationController
   end
 
   private
+
+    def ensure_manager
+      raise ActiveRecord::RecordNotFound if !current_user.manager?
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_offering
       @offering = Offering.includes(:offers).find(params[:id])
