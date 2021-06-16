@@ -59,6 +59,10 @@ class Offering < ApplicationRecord
     update!(published: true)
   end
 
+  def total_harvested
+    harvested_products.sum(:amount)
+  end
+
 private
 
     def set_closes_at
